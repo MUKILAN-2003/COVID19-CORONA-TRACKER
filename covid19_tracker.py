@@ -17,6 +17,7 @@ covid_data = data_corona.findAll('div',{'class':"maincounter-number"})
 corona = pd.read_csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/web-data/data/cases_country.csv")
 corona.to_csv('covid19_data.csv')
 covid_19 = pd.read_csv('covid19_data.csv')
+corona['Recovered'] = corona['Recovered'].fillna(0)
 corona["Country_Region"] = corona["Country_Region"].str.lower()
 countrys = []
 mortality_data = covid_19.sort_values('Mortality_Rate',ascending=False).head(7)
